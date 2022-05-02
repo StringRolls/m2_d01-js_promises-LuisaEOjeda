@@ -10,30 +10,65 @@ const directions = [
 
 function getDirections(step, callback, errorCallback) {
   setTimeout(() => {
-    console.log( directions[step] );
+    console.log( directions[step]);// this simulate giving the instructions to th euser
     
     if (!directions[step]) errorCallback('Instructions not found.');
-    else callback();
-  }, 2000); 
-  
+    else {
+      console.log(directions[step]); // This simulates giving isntruction to the user walking
+      callback();
+    }
+  }, 1500 + Math.random() * 1000);
 }
-
-// Single callback
-// getDirections(0, ()=> {
+/*
+// Single callback ... Callback hell
+getDirections(0, ()=> {
 //   getDirections(1, () => {});
-// });
+return;
+ });
+
+ getDirections(1, ()=> {
+//   getDirections(1, () => {});
+return;
+ });
+
+ getDirections(2, ()=> {
+//   getDirections(1, () => {});
+return;
+ });
+*/
+
 
 
 // Callbacks in sequence
-getDirections(0, () => {
-  getDirections(1, () => {
-    getDirections(2, () => {
-      getDirections(3, () => {
-        
-        console.log('You arrived at your destination!');
-        // getDirections(4, () => {}, (err) => console.log(err) ) ;
+// Callbacks in sequence
+getDirections(
+  0,
+  () => {
+    getDirections(
+      1,
+      () => {
+        getDirections(
+          2,
+          () => {
+            getDirections(
+              3,
+              () => {
+                console.log("You arrived at your destination!");
+                getDirections(
+                  4,
+                  () => {},
+                  (err) => console.log(err)
+                );
+              },
+              (err) => console.log(err)
+            );
+          },
+          (err) => console.log(err)
+        );
+      },
+      (err) => console.log(err)
+    );
+  },
+  (err) => console.log(err)
+);
 
-  	  }, (err) => console.log(err));
-    }, (err) => console.log(err));
-  }, (err) => console.log(err));
-}, (err) => console.log(err));

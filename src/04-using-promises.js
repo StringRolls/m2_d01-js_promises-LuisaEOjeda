@@ -1,3 +1,5 @@
+console.log("LOADED")
+
 const directions = [
   'Starting point: Ironhack Madrid',
   '➔ Turn right toward P. de la Chopera',
@@ -13,7 +15,7 @@ function obtainDirections(step) {
 
       if (!directions[step]) reject('Instructions not found.')
       else resolve();
-    }, 2000); 
+    }, 1500 + Math.random() * 1000); 
     
   })
 }

@@ -1,22 +1,22 @@
 "use strict";
 
 const pr5 = new Promise((resolve, reject) => {
-  setTimeout(() => resolve("A"), 2000);
+  setTimeout(() => resolve("Cappuccino"), 2000);
 });
 
 
 pr5
   .then((value1) => {
     console.log("value1:", value1);
-    return "B";
+    return value1 + " is good!";
   })
   .then((value2) => {
     console.log("value2:", value2);
-    return "C";
+    return ".. but pizza is algo good";
   })
   .then((value3) => {
     console.log("value3:", value3);
-    return "D";
+    return "Though pizza and cappuccino don't go together";
   })
   .then((value4) => {
     console.log("value4:", value4);
